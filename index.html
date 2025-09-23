@@ -515,85 +515,93 @@
             font-weight: 500;
         }
 
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
+   /* Skills Grid - Version 2 colonnes et compacte */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes fixes */
+    gap: 1.5rem; /* espace réduit entre les colonnes */
+    margin-top: 2rem;
+}
 
-        .skill-category {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+/* Carte des compétences */
+.skill-category {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 15px; /* coins un peu plus petits */
+    padding: 1.5rem; /* moins d’espace pour un look plus compact */
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    font-size: 0.9rem; /* Réduction générale de la taille du texte */
+}
 
-        .skill-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-        }
+.skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+}
 
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-        }
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 212, 255, 0.15);
+}
 
-        .skill-category h3 {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-            color: var(--text-primary);
-        }
+/* Titres plus petits */
+.skill-category h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
 
-        .skill-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 0.5rem 0;
-        }
+/* Item plus compact */
+.skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    padding: 0.3rem 0;
+}
 
-        .skill-name {
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
+/* Nom plus petit */
+.skill-name {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
 
-        .skill-level {
-            display: flex;
-            gap: 4px;
-        }
+/* Niveau de compétence */
+.skill-level {
+    display: flex;
+    gap: 3px;
+}
 
-        .skill-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--text-muted);
-            transition: all 0.3s ease;
-        }
+.skill-dot {
+    width: 7px; /* points plus petits */
+    height: 7px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    transition: all 0.3s ease;
+}
 
-        .skill-dot.active {
-            background: var(--primary-color);
-            box-shadow: 0 0 10px var(--primary-color);
-            animation: glow 2s ease-in-out infinite;
-        }
+.skill-dot.active {
+    background: var(--primary-color);
+    box-shadow: 0 0 6px var(--primary-color);
+    animation: glow 2s ease-in-out infinite;
+}
 
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 10px var(--primary-color); }
-            50% { box-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color); }
-        }
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 6px var(--primary-color); }
+    50% { box-shadow: 0 0 12px var(--primary-color), 0 0 20px var(--primary-color); }
+}
+
 
         /* Timeline */
         .timeline {
@@ -1131,8 +1139,8 @@
         </div>
         <div class="navbar-controls">
             <select class="language-selector" id="languageSelector" aria-label="Choisir la langue">
+              <option value="en">English</option>
                 <option value="fr">Français</option>
-                <option value="en">English</option>
                 <option value="mg">Malagasy</option>
             </select>
             <button class="control-button" id="themeToggle" aria-label="Changer de thème">
@@ -1175,7 +1183,7 @@
                 <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; color: white;">ER</div>
             </div>
             <div class="sidebar-name">Elio Rachel</div>
-            <div class="sidebar-title" data-lang-key="hero-subtitle">Développeur Front-end Innovant</div>
+            <div class="sidebar-title" data-lang-key="hero-subtitle">Développeur Web & Mobile Application</div>
         </div>
         
         <ul class="sidebar-nav">
@@ -1215,7 +1223,7 @@
                     <img src="profile.jpg" alt="Photo de profil de Elio Rachel" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.fontSize='4rem'; this.parentElement.innerHTML='ER';">
                 </div>
                 <h1 class="hero-title" style="font-size: 50px;" data-lang-key="hero-title">Elio Rachel RAKOTONOMENJANAHARY</h1>
-                <p class="hero-subtitle" data-lang-key="hero-subtitle">Développeur Front-end Innovant</p>
+                <p class="hero-subtitle" data-lang-key="hero-subtitle">Développeur Web & Mobile Application</p>
                   <!-- Stats Section -->
             <div class="stats fade-in" style="padding: 1.5rem 0; margin: 2rem 0;">
               <div class="stats-grid" style="gap: 1rem; grid-template-columns: repeat(4, 1fr); align-items: center;">
@@ -1272,9 +1280,9 @@
         <!-- Skills Section -->
         <section id="skills" class="content-section">
             <div class="section-header">
-                <h2 class="section-title" data-lang-key="skills-title">Compétences Techniques</h2>
+                <h2 class="section-title" data-lang-key="skills-title">Technical Skills</h2>
                 <p class="section-subtitle" data-lang-key="skills-subtitle">
-                    Maîtrise complète des technologies modernes de développement web et logiciel
+                    Complete mastery of modern web, mobile, and artificial intelligence development technologies
                 </p>
             </div>
 
@@ -1288,7 +1296,7 @@
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
-                            <div class="skill-dot"></div>
+                            <div class="skill-dot active"></div>
                         </div>
                     </div>
                     <div class="skill-item">
@@ -1302,7 +1310,7 @@
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">Angular</span>
+                        <span class="skill-name">Angular & React</span>
                         <div class="skill-level">
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
@@ -1312,7 +1320,7 @@
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">Bootstrap</span>
+                        <span class="skill-name">Bootstrap & Tailwind</span>
                         <div class="skill-level">
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
@@ -1321,13 +1329,13 @@
                             <div class="skill-dot"></div>
                         </div>
                     </div>
-                     <div class="skill-item">
-                        <span class="skill-name">Tailwind</span>
+                    <div class="skill-item">
+                        <span class="skill-name">Vue.js</span>
                         <div class="skill-level">
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
-                            <div class="skill-dot active"></div>
+                            <div class="skill-dot"></div>
                             <div class="skill-dot"></div>
                         </div>
                     </div>
@@ -1342,7 +1350,7 @@
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
-                            <div class="skill-dot"></div>
+                            <div class="skill-dot active"></div>
                         </div>
                     </div>
                     <div class="skill-item">
@@ -1351,12 +1359,12 @@
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
-                            <div class="skill-dot"></div>
+                            <div class="skill-dot active"></div>
                             <div class="skill-dot"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">Node.js</span>
+                        <span class="skill-name">Node.js & Express</span>
                         <div class="skill-level">
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
@@ -1366,26 +1374,36 @@
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">API Development</span>
+                        <span class="skill-name">REST API Development</span>
                         <div class="skill-level">
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
+                            <div class="skill-dot"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Python</span>
+                        <div class="skill-level">
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot"></div>
                             <div class="skill-dot"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="skill-category fade-in">
-                    <h3><i class="fas fa-database" aria-hidden="true"></i> Base de Données & Outils</h3>
+                    <h3><i class="fas fa-database" aria-hidden="true"></i> Database & Tools</h3>
                     <div class="skill-item">
                         <span class="skill-name">MySQL / PostgreSQL</span>
                         <div class="skill-level">
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
-                            <div class="skill-dot"></div>
+                            <div class="skill-dot active"></div>
                             <div class="skill-dot"></div>
                         </div>
                     </div>
@@ -1396,11 +1414,65 @@
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
-                            <div class="skill-dot"></div>
+                            <div class="skill-dot active"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Docker</span>
+                        <div class="skill-level">
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot"></div>
+                            <div class="skill-dot"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Firebase</span>
+                        <div class="skill-level">
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot"></div>
+                            <div class="skill-dot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category ai-category fade-in">
+                    <h3><i class="fas fa-robot" aria-hidden="true"></i> AI & Machine Learning</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Machine Learning Fundamentals</span>
+                        <div class="skill-level">
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot"></div>
+                            <div class="skill-dot"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Python for AI</span>
+                        <div class="skill-level">
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot"></div>
+                            <div class="skill-dot"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">AI Integration in Web Apps</span>
+                        <div class="skill-level">
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot active"></div>
+                            <div class="skill-dot"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Natural Language Processing</span>
                         <div class="skill-level">
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
@@ -1410,7 +1482,7 @@
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">Python</span>
+                        <span class="skill-name">Computer Vision</span>
                         <div class="skill-level">
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
@@ -1597,6 +1669,133 @@
                         <a href="https://github.com/GasyCoder/labo-lareference" class="project-link" target="_blank" aria-label="Code source La Référence">La Référence</a>
                     </div>
                 </div>
+                <!-- Nouveaux projets ajoutés -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Gestion du Matériel de Laboratoire</div>
+                            <div class="project-tech">JavaScript</div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Système complet de gestion des équipements et matériels de laboratoire avec suivi des stocks, 
+                        planification de maintenance et analyse d’utilisation. Construit en JavaScript moderne pour mises à jour en temps réel.
+                    </div>
+                    <div class="project-collab">
+                        <i class="fas fa-code" aria-hidden="true"></i> Projet Solutions Laboratoire
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kananavy/gestion-materiel-labo" class="project-link enhanced-hover" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Plateforme TP ISSTM</div>
+                            <div class="project-tech">JavaScript/Node.js</div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Plateforme éducative pour la gestion des travaux pratiques à l’ISSTM. Soumission de devoirs, 
+                        suivi des notes, tableau de bord enseignant et gestion complète des étudiants.
+                    </div>
+                    <div class="project-collab">
+                        <i class="fas fa-graduation-cap" aria-hidden="true"></i> Projet Institution Académique
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kananavy/isstm-tp-platform" class="project-link enhanced-hover" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Front-end Gestion Étudiants</div>
+                            <div class="project-tech">JavaScript/React</div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Interface moderne de gestion des étudiants avec suivi des inscriptions, gestion des notes, 
+                        absences et communication avec les parents. Design responsive pour tous types d’appareils.
+                    </div>
+                    <div class="project-collab">
+                        <i class="fas fa-users" aria-hidden="true"></i> Équipe Éducation Technologique
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kananavy/front-end-GestionEtudient" class="project-link enhanced-hover" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Gestion Bloc Ambondrona</div>
+                            <div class="project-tech">JavaScript</div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Système de gestion communautaire pour le quartier Ambondrona avec enregistrement des résidents, 
+                        gestion des services, événements et communication pour l’administration locale.
+                    </div>
+                    <div class="project-collab">
+                        <i class="fas fa-building" aria-hidden="true"></i> Solution Gestion Communautaire
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kananavy/gestion-bloc-ambondrona" class="project-link enhanced-hover" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Système de Présence Étudiants</div>
+                            <div class="project-tech">PHP/Laravel</div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Système automatisé de suivi des présences étudiantes avec intégration biométrique, notifications en temps réel, 
+                        alertes parents et reporting complet pour les institutions éducatives.
+                    </div>
+                    <div class="project-collab">
+                        <i class="fas fa-clock" aria-hidden="true"></i> Solution Éducation Technologique
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kananavy/StudentAttendanceSystem" class="project-link enhanced-hover" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Projet Hackathon Educuma</div>
+                            <div class="project-tech ai-tech">C# + IA</div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Plateforme éducative avec fonctionnalités IA développée lors du Hackathon Educuma. Système de tutorat intelligent, 
+                        évaluation automatisée et parcours d’apprentissage personnalisé pour les étudiants.
+                    </div>
+                    <div class="project-collab">
+                        <i class="fas fa-trophy" aria-hidden="true"></i> Concours Hackathon
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/kananavy/Educuma_Hackaton" class="project-link enhanced-hover" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
 
                 <div class="project-card fade-in">
                     <div class="project-header">
@@ -1775,7 +1974,7 @@
                 'nav-education': 'Formation',
                 'nav-contact': 'Contact',
                 'hero-title': 'Elio Rachel RAKOTONOMENJANAHARY',
-                'hero-subtitle': 'Développeur Front-end Innovant',
+                'hero-subtitle': 'Développeur Web & Mobile Application',
                 'hero-description': 'Passionné par les technologies web modernes, je crée des solutions digitales élégantes et performantes. Spécialisé en JavaScript, PHP, C# avec une approche collaborative sur plus de 20 projets réalisés.',
                 'see-projects': 'Voir mes projets',
                 'contact-me': 'Me contacter',
