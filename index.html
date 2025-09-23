@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de Elio Rachel RAKOTONOMENJANAHARY, Développeur Front-end spécialisé en JavaScript, PHP, et C#. Découvrez mes projets et compétences.">
-    <meta name="keywords" content="portfolio, développeur Front-end, JavaScript, PHP, C#, web development, Mahajanga">
+    <meta name="description" content="Portfolio de Elio Rachel RAKOTONOMENJANAHARY, Développeur Web & Mobile spécialisé en JavaScript, PHP, et C#. Découvrez mes projets et compétences.">
+    <meta name="keywords" content="portfolio, développeur web, mobile application, JavaScript, PHP, C#, web development, Mahajanga">
     <meta name="author" content="Elio Rachel RAKOTONOMENJANAHARY">
-    <title>Portfolio - Elio Rachel RAKOTONOMENJANAHARY | Front-end Developer</title>
+    <title>Portfolio - Elio Rachel RAKOTONOMENJANAHARY | Web & Mobile Developer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -169,6 +169,22 @@
             color: var(--text-primary);
             cursor: pointer;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .language-selector select {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .language-selector select option {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
         }
 
         .mobile-menu-btn {
@@ -366,7 +382,7 @@
             font-weight: bold;
             color: white;
             position: relative;
-            animation: rotate 20s linear infinite;
+            animation: tiltRotate 4s ease-in-out infinite;
             overflow: hidden;
             padding: 4px;
         }
@@ -378,9 +394,9 @@
             border-radius: 50%;
         }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes tiltRotate {
+            0%, 100% { transform: rotate(-25deg); }
+            50% { transform: rotate(25deg); }
         }
 
         .hero-avatar::before {
@@ -390,7 +406,7 @@
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
             border-radius: 50%;
             opacity: 0.3;
-            animation: rotate 15s linear infinite reverse;
+            animation: tiltRotate 3s ease-in-out infinite reverse;
         }
 
         .hero-title {
@@ -529,7 +545,7 @@
     backdrop-filter: blur(20px);
     border: 1px solid var(--border-color);
     border-radius: 15px; /* coins un peu plus petits */
-    padding: 1.5rem; /* moins d’espace pour un look plus compact */
+    padding: 1.5rem; /* moins d'espace pour un look plus compact */
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -863,17 +879,17 @@
         .footer {
             background: var(--bg-secondary);
             border-top: 1px solid var(--border-color);
-            padding: 3rem;
+            padding: 2rem;
             text-align: center;
-            margin-top: 4rem;
+            margin-top: 2rem;
         }
 
         .footer-content {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
+            flex-direction: column;
+            gap: 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -923,6 +939,19 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Language selector with flags */
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .flag-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 2px;
         }
 
         /* Responsive Design */
@@ -1092,6 +1121,7 @@
                 align-items: center;
                 justify-content: center;
                 min-width: 0;
+                padding: 0.5rem;
               }
               .stat-number {
                 font-size: 1.5rem !important;
@@ -1100,29 +1130,46 @@
               .stat-label {
                 font-size: 0.9rem !important;
                 text-align: center;
-                white-space: nowrap;
+                white-space: normal;
+                line-height: 1.2;
+                word-wrap: break-word;
+                hyphens: auto;
               }
               @media (max-width: 768px) {
                 .stats-grid {
                   grid-template-columns: repeat(2, 1fr) !important;
+                  gap: 1rem !important;
                 }
                 .stat-item {
-                  margin-bottom: 0.5rem;
+                  margin-bottom: 1rem;
+                  padding: 1rem 0.5rem;
+                }
+                .stat-number {
+                  font-size: 1.8rem !important;
+                }
+                .stat-label {
+                  font-size: 0.85rem !important;
+                  max-width: 120px;
                 }
               }
               @media (max-width: 480px) {
                 .stats-grid {
-                  grid-template-columns: 1fr 1fr !important;
-                  gap: 0.5rem !important;
+                  grid-template-columns: 1fr !important;
+                  gap: 1rem !important;
+                }
+                .stat-item {
+                  padding: 1rem;
+                  margin-bottom: 0;
                 }
                 .stat-number {
-                  font-size: 1.1rem !important;
+                  font-size: 2rem !important;
                 }
                 .stat-label {
-                  font-size: 0.8rem !important;
+                  font-size: 1rem !important;
+                  max-width: none;
                 }
                 .stats.fade-in {
-                  padding: 0.5rem 0 !important;
+                  padding: 2rem 1rem !important;
                 }
               }
     </style>
@@ -1138,12 +1185,13 @@
             <strong>Elio Rachel</strong>
         </div>
         <div class="navbar-controls">
-            <select class="language-selector" id="languageSelector" aria-label="Choisir la langue">
-              <option value="en">English</option>
-                <option value="fr">Français</option>
-                <option value="mg">Malagasy</option>
-            </select>
-            <button class="control-button" id="themeToggle" aria-label="Changer de thème">
+            <div class="language-selector">
+                <select id="languageSelector" aria-label="Choose language">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                </select>
+            </div>
+            <button class="control-button" id="themeToggle" aria-label="Change theme">
                 <i class="fas fa-moon"></i>
             </button>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1156,10 +1204,10 @@
     <div id="contact-modal" class="modal" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
-            <h2 data-lang-key="contact-modal-title">Contactez-moi</h2>
+            <h2 data-lang-key="contact-modal-title">Contact Me</h2>
             <form id="contact-form" action="mailto:kananavymiremby@gmail.com" method="post" enctype="text/plain">
                 <div class="form-group">
-                    <label for="name" data-lang-key="form-name">Nom</label>
+                    <label for="name" data-lang-key="form-name">Name</label>
                     <input type="text" id="name" name="name" required aria-required="true">
                 </div>
                 <div class="form-group">
@@ -1170,7 +1218,7 @@
                     <label for="message" data-lang-key="form-message">Message</label>
                     <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
                 </div>
-                <button type="submit" class="cta-button cta-primary" data-lang-key="form-send">Envoyer</button>
+                <button type="submit" class="cta-button cta-primary" data-lang-key="form-send">Send</button>
             </form>
         </div>
     </div>
@@ -1179,33 +1227,33 @@
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-profile">
             <div class="sidebar-avatar">
-                <img src="profile.jpg" alt="Photo de profil de Elio Rachel" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <img src="profile.jpg" alt="Elio Rachel profile photo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; color: white;">ER</div>
             </div>
             <div class="sidebar-name">Elio Rachel</div>
-            <div class="sidebar-title" data-lang-key="hero-subtitle">Développeur Web & Mobile Application</div>
+            <div class="sidebar-title" data-lang-key="hero-subtitle">Web & Mobile Developer</div>
         </div>
         
         <ul class="sidebar-nav">
             <li><a href="#home" class="nav-link active" data-section="home">
                 <i class="fas fa-home"></i>
-                <span data-lang-key="nav-home">Accueil</span>
+                <span data-lang-key="nav-home">Home</span>
             </a></li>
             <li><a href="#skills" class="nav-link" data-section="skills">
                 <i class="fas fa-code"></i>
-                <span data-lang-key="nav-skills">Compétences</span>
+                <span data-lang-key="nav-skills">Skills</span>
             </a></li>
             <li><a href="#experience" class="nav-link" data-section="experience">
                 <i class="fas fa-briefcase"></i>
-                <span data-lang-key="nav-experience">Expérience</span>
+                <span data-lang-key="nav-experience">Experience</span>
             </a></li>
             <li><a href="#projects" class="nav-link" data-section="projects">
                 <i class="fas fa-project-diagram"></i>
-                <span data-lang-key="nav-projects">Projets</span>
+                <span data-lang-key="nav-projects">Projects</span>
             </a></li>
             <li><a href="#education" class="nav-link" data-section="education">
                 <i class="fas fa-graduation-cap"></i>
-                <span data-lang-key="nav-education">Formation</span>
+                <span data-lang-key="nav-education">Education</span>
             </a></li>
             <li><a href="#contact" class="nav-link" data-section="contact">
                 <i class="fas fa-envelope"></i>
@@ -1220,39 +1268,39 @@
         <section id="home" class="content-section hero-section">
             <div class="hero-content">
                 <div class="hero-avatar">
-                    <img src="profile.jpg" alt="Photo de profil de Elio Rachel" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.fontSize='4rem'; this.parentElement.innerHTML='ER';">
+                    <img src="profile.jpg" alt="Elio Rachel profile photo" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.fontSize='4rem'; this.parentElement.innerHTML='ER';">
                 </div>
                 <h1 class="hero-title" style="font-size: 50px;" data-lang-key="hero-title">Elio Rachel RAKOTONOMENJANAHARY</h1>
-                <p class="hero-subtitle" data-lang-key="hero-subtitle">Développeur Web & Mobile Application</p>
+                <p class="hero-subtitle" data-lang-key="hero-subtitle">Web & Mobile Developer</p>
                   <!-- Stats Section -->
             <div class="stats fade-in" style="padding: 1.5rem 0; margin: 2rem 0;">
               <div class="stats-grid" style="gap: 1rem; grid-template-columns: repeat(4, 1fr); align-items: center;">
                 <div class="stat-item" style="padding: 0;">
                   <span class="stat-number" style="font-size: 1.5rem;">20+</span>
-                  <span class="stat-label" data-lang-key="projects-completed" style="font-size: 0.9rem;">Projets Réalisés</span>
+                  <span class="stat-label" data-lang-key="projects-completed" style="font-size: 0.9rem;">Projects Completed</span>
                 </div>
                 <div class="stat-item" style="padding: 0;">
                   <span class="stat-number" style="font-size: 1.5rem;">5+</span>
-                  <span class="stat-label" data-lang-key="technologies-mastered" style="font-size: 0.9rem;">Technologies Maîtrisées</span>
+                  <span class="stat-label" data-lang-key="technologies-mastered" style="font-size: 0.9rem;">Technologies Mastered</span>
                 </div>
                 <div class="stat-item" style="padding: 0;">
                   <span class="stat-number" style="font-size: 1.5rem;">15+</span>
                   <span class="stat-label" data-lang-key="collaborations" style="font-size: 0.9rem;">Collaborations</span>
                 </div>
                 <div class="stat-item" style="padding: 0;">
-                  <span class="stat-number" style="font-size: 1.5rem;">3</span>
-                  <span class="stat-label" data-lang-key="years-experience" style="font-size: 0.9rem;">Années d'Expérience</span>
+                  <span class="stat-number" style="font-size: 1.5rem;">4</span>
+                  <span class="stat-label" data-lang-key="years-experience" style="font-size: 0.9rem;">Years Experience</span>
                 </div>
               </div>
             </div>
                 <p class="hero-description" data-lang-key="hero-description">
-                    Passionné par les technologies web modernes, je crée des solutions digitales élégantes et performantes. 
-                    Spécialisé en JavaScript, PHP, C# avec une approche collaborative sur plus de 20 projets réalisés.
+                    Passionate about modern web technologies, I create elegant and high-performing digital solutions. 
+                    Specialized in JavaScript, PHP, C# with a collaborative approach on over 20 completed projects.
                 </p>
                 
                 <div class="hero-cta">
-                    <a href="#projects" class="cta-button cta-primary" aria-label="Voir mes projets" data-lang-key="see-projects">Voir mes projets</a>
-                    <button class="cta-button cta-secondary contact-trigger" aria-label="Me contacter" data-lang-key="contact-me">Me contacter</button>
+                    <a href="#projects" class="cta-button cta-primary" aria-label="View my projects" data-lang-key="see-projects">View Projects</a>
+                    <button class="cta-button cta-secondary contact-trigger" aria-label="Contact me" data-lang-key="contact-me">Contact Me</button>
                 </div>
                 
                 <div class="contact-info">
@@ -1498,9 +1546,9 @@
         <!-- Experience Section -->
         <section id="experience" class="content-section">
             <div class="section-header">
-                <h2 class="section-title" data-lang-key="experience-title">Parcours Professionnel</h2>
+                <h2 class="section-title" data-lang-key="experience-title">Professional Experience</h2>
                 <p class="section-subtitle" data-lang-key="experience-subtitle">
-                    Une expérience riche et diversifiée dans le développement web et logiciel
+                    A rich and diverse experience in web and software development
                 </p>
             </div>
 
@@ -1509,12 +1557,12 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">2025</div>
-                        <div class="timeline-role" data-lang-key="role-1">Développeur Front-end</div>
+                        <div class="timeline-role" data-lang-key="role-1">Web & Mobile Developer</div>
                         <div class="timeline-company">Gasikar Digital & Gasy Coder & Janga Consulting</div>
                         <div class="timeline-description" data-lang-key="desc-1">
-                            Développement d'applications web modernes et responsives. Participation à des projets de transformation numérique 
-                            et création d'outils internes. Collaboration étroite avec des équipes multidisciplinaires pour livrer des solutions 
-                            innovantes en React, Angular et PHP/Laravel.
+                            Development of modern and responsive web applications. Participation in digital transformation projects 
+                            and creation of internal tools. Close collaboration with multidisciplinary teams to deliver innovative 
+                            solutions in React, Angular, and PHP/Laravel.
                         </div>
                     </div>
                 </div>
@@ -1523,12 +1571,12 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">2024</div>
-                        <div class="timeline-role" data-lang-key="role-2">Stagiaire Développeur Full stack</div>
+                        <div class="timeline-role" data-lang-key="role-2">Full Stack Developer Intern</div>
                         <div class="timeline-company">AQUALMA</div>
                         <div class="timeline-description" data-lang-key="desc-2">
-                            Développement d'applications web et mobile dans le secteur aquacole. Participation active aux projets de 
-                            digitalisation et amélioration des processus métiers. Mise en place d'APIs RESTful et d'interfaces utilisateur 
-                            intuitives pour optimiser les flux de travail.
+                            Development of web and mobile applications in the aquaculture sector. Active participation in 
+                            digitization projects and business process improvements. Implementation of RESTful APIs and intuitive 
+                            user interfaces to optimize workflows.
                         </div>
                     </div>
                 </div>
@@ -1537,12 +1585,12 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">2023-2024</div>
-                        <div class="timeline-role" data-lang-key="role-3">Technicien Informatique & Développeur</div>
+                        <div class="timeline-role" data-lang-key="role-3">IT Technician & Developer</div>
                         <div class="timeline-company">MATEZA</div>
                         <div class="timeline-description" data-lang-key="desc-3">
-                            Développement Front-end, gestion des réseaux et design graphique. Support technique et maintenance des systèmes 
-                            informatiques. Création d'outils de gestion internes et formation des utilisateurs finaux. Responsabilité de 
-                            l'infrastructure IT et des solutions logicielles personnalisées.
+                            Front-end development, network management, and graphic design. Technical support and maintenance of 
+                            IT systems. Creation of internal management tools and training of end-users. Responsible for IT 
+                            infrastructure and customized software solutions.
                         </div>
                     </div>
                 </div>
@@ -1551,12 +1599,12 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">2023</div>
-                        <div class="timeline-role" data-lang-key="role-4">Membre Actif & Développeur</div>
+                        <div class="timeline-role" data-lang-key="role-4">Active Member & Developer</div>
                         <div class="timeline-company">STEAM Club</div>
                         <div class="timeline-description" data-lang-key="desc-4">
-                            Collaboration sur des projets innovants : développement web, intelligence artificielle et robotique. 
-                            Animation d'ateliers techniques et encadrement de projets étudiants. Contribution à la communauté tech 
-                            locale par le partage de connaissances et l'organisation d'événements technologiques.
+                            Collaboration on innovative projects: web development, artificial intelligence, and robotics. 
+                            Leading technical workshops and mentoring student projects. Contribution to the local tech community 
+                            through knowledge sharing and organizing tech events.
                         </div>
                     </div>
                 </div>
@@ -1566,9 +1614,9 @@
         <!-- Projects Section -->
         <section id="projects" class="content-section">
             <div class="section-header">
-                <h2 class="section-title" data-lang-key="projects-title">Projets Développés</h2>
+                <h2 class="section-title" data-lang-key="projects-title">Developed Projects</h2>
                 <p class="section-subtitle" data-lang-key="projects-subtitle">
-                    Une sélection de mes réalisations les plus significatives, démontrant ma polyvalence technique
+                    A selection of my most significant achievements, showcasing my technical versatility
                 </p>
             </div>
 
@@ -1576,20 +1624,20 @@
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div>
-                            <div class="project-title" data-lang-key="project-1-title">Arbre Généalogique Front-end</div>
+                            <div class="project-title" data-lang-key="project-1-title">Front-end Family Tree</div>
                             <div class="project-tech">JavaScript</div>
                         </div>
                     </div>
                     <div class="project-description" data-lang-key="project-1-desc">
-                        Application complète de gestion d'arbres généalogiques avec interface front-end moderne et API back-end robuste. 
-                        Gestion des relations familiales complexes avec visualisation interactive et système d'authentification sécurisé.
+                        Comprehensive family tree management application with a modern front-end interface and robust back-end API. 
+                        Management of complex family relationships with interactive visualization and secure authentication system.
                     </div>
                     <div class="project-collab" data-lang-key="project-1-collab">
-                        <i class="fas fa-users" aria-hidden="true"></i> Collaboration : Architecture distribuée Frontend/Backend
+                        <i class="fas fa-users" aria-hidden="true"></i> Collaboration: Distributed Frontend/Backend Architecture
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link" aria-label="Démo Arbre Généalogique" data-lang-key="demo">Demo</a>
-                        <a href="#" class="project-link" aria-label="Code source Arbre Généalogique" data-lang-key="code">Code</a>
+                        <a href="#" class="project-link" aria-label="Family Tree Demo" data-lang-key="demo">Demo</a>
+                        <a href="#" class="project-link" aria-label="Family Tree Source Code" data-lang-key="code">Code</a>
                     </div>
                 </div>
 
@@ -1601,88 +1649,88 @@
                         </div>
                     </div>
                     <div class="project-description" data-lang-key="project-2-desc">
-                        Interface front-end moderne pour système ERP avec tableau de bord analytique, gestion des utilisateurs et 
-                        intégration API complète. Design responsive et expérience utilisateur optimisée pour les environnements d'entreprise.
+                        Modern front-end interface for an ERP system with analytical dashboard, user management, and 
+                        full API integration. Responsive design and optimized user experience for enterprise environments.
                     </div>
                     <div class="project-collab" data-lang-key="project-2-collab">
-                        <i class="fas fa-users" aria-hidden="true"></i> Équipe Gasikara Digital
+                        <i class="fas fa-users" aria-hidden="true"></i> Gasikara Digital Team
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/gasikaradigital/live-erpinnov-front" class="project-link" target="_blank" aria-label="Code source ERP Innov Front Gasikara Digital">GitHub</a>
+                        <a href="https://github.com/gasikaradigital/live-erpinnov-front" class="project-link" target="_blank" aria-label="ERP Innov Source Code">GitHub</a>
                     </div>
                 </div>
 
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div>
-                            <div class="project-title" data-lang-key="project-3-title">Projet Tina - Finance & Stock</div>
+                            <div class="project-title" data-lang-key="project-3-title">Tina Project - Finance & Stock</div>
                             <div class="project-tech">PHP/Laravel</div>
                         </div>
                     </div>
                     <div class="project-description" data-lang-key="project-3-desc">
-                        Système de gestion financière et suivi des stocks avec reporting automatisé, alertes intelligentes et 
-                        analytics avancés. Interface intuitive pour la gestion multi-entrepôts et suivi en temps réel.
+                        Financial management and inventory tracking system with automated reporting, intelligent alerts, and 
+                        advanced analytics. Intuitive interface for multi-warehouse management and real-time tracking.
                     </div>
                     <div class="project-collab" data-lang-key="project-3-collab">
-                        <i class="fas fa-users" aria-hidden="true"></i> Équipe open source Mahajanga
+                        <i class="fas fa-users" aria-hidden="true"></i> Mahajanga Open Source Team
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/GasyCoder/projet-tina" class="project-link" target="_blank" aria-label="Code source Projet Tina">GitHub</a>
+                        <a href="https://github.com/GasyCoder/projet-tina" class="project-link" target="_blank" aria-label="Tina Project Source Code">GitHub</a>
                     </div>
                 </div>
 
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div>
-                            <div class="project-title" data-lang-key="project-4-title">SmartScol - Faculté Médecine Mahajanga</div>
+                            <div class="project-title" data-lang-key="project-4-title">SmartScol - Medical Faculty Mahajanga</div>
                             <div class="project-tech">JavaScript/PHP</div>
                         </div>
                     </div>
                     <div class="project-description" data-lang-key="project-4-desc">
-                        Plateforme académique complète pour la gestion des étudiants, enseignants et cursus. Système de notation, 
-                        planning automatisé et communication intégrée. Interface dédiée pour administration académique.
+                        Comprehensive academic platform for managing students, teachers, and curricula. Grading system, 
+                        automated scheduling, and integrated communication. Dedicated interface for academic administration.
                     </div>
                     <div class="project-collab" data-lang-key="project-4-collab">
-                        <i class="fas fa-users" aria-hidden="true"></i> Équipe académique Mahajanga
+                        <i class="fas fa-users" aria-hidden="true"></i> Mahajanga Academic Team
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/GasyCoder/smartScol" class="project-link" target="_blank" aria-label="Code source SmartScol">GitHub</a>
+                        <a href="https://github.com/GasyCoder/smartScol" class="project-link" target="_blank" aria-label="SmartScol Source Code">GitHub</a>
                     </div>
                 </div>
 
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div>
-                            <div class="project-title" data-lang-key="project-5-title">Laboratoires CTB Nosy be & La Référence Mahajanga</div>
+                            <div class="project-title" data-lang-key="project-5-title">CTB Nosy be & La Référence Mahajanga Laboratories</div>
                             <div class="project-tech">JavaScript/PHP</div>
                         </div>
                     </div>
                     <div class="project-description" data-lang-key="project-5-desc">
-                        Systèmes de gestion d'analyses médicales pour laboratoires. Gestion complète des patients, résultats d'analyses, 
-                        facturation et reporting. Interface sécurisée avec système de rôles et traçabilité complète.
+                        Medical analysis management systems for laboratories. Complete management of patients, test results, 
+                        billing, and reporting. Secure interface with role-based system and full traceability.
                     </div>
                     <div class="project-collab" data-lang-key="project-5-collab">
-                        <i class="fas fa-users" aria-hidden="true"></i> Équipes techniques laboratoires
+                        <i class="fas fa-users" aria-hidden="true"></i> Laboratory Technical Teams
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/GasyCoder/labo-ctb-nosybe" class="project-link" target="_blank" aria-label="Code source CTB">CTB GitHub</a>
-                        <a href="https://github.com/GasyCoder/labo-lareference" class="project-link" target="_blank" aria-label="Code source La Référence">La Référence</a>
+                        <a href="https://github.com/GasyCoder/labo-ctb-nosybe" class="project-link" target="_blank" aria-label="CTB Source Code">CTB GitHub</a>
+                        <a href="https://github.com/GasyCoder/labo-lareference" class="project-link" target="_blank" aria-label="La Référence Source Code">La Référence</a>
                     </div>
                 </div>
                 <!-- Nouveaux projets ajoutés -->
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div>
-                            <div class="project-title">Gestion du Matériel de Laboratoire</div>
+                            <div class="project-title">Laboratory Equipment Management</div>
                             <div class="project-tech">JavaScript</div>
                         </div>
                     </div>
                     <div class="project-description">
-                        Système complet de gestion des équipements et matériels de laboratoire avec suivi des stocks, 
-                        planification de maintenance et analyse d’utilisation. Construit en JavaScript moderne pour mises à jour en temps réel.
+                        Complete laboratory equipment and materials management system with inventory tracking, 
+                        maintenance planning, and usage analysis. Built with modern JavaScript for real-time updates.
                     </div>
                     <div class="project-collab">
-                        <i class="fas fa-code" aria-hidden="true"></i> Projet Solutions Laboratoire
+                        <i class="fas fa-code" aria-hidden="true"></i> Laboratory Solutions Project
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/kananavy/gestion-materiel-labo" class="project-link enhanced-hover" target="_blank">
@@ -1694,16 +1742,16 @@
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div>
-                            <div class="project-title">Plateforme TP ISSTM</div>
+                            <div class="project-title">ISSTM TP Platform</div>
                             <div class="project-tech">JavaScript/Node.js</div>
                         </div>
                     </div>
                     <div class="project-description">
-                        Plateforme éducative pour la gestion des travaux pratiques à l’ISSTM. Soumission de devoirs, 
-                        suivi des notes, tableau de bord enseignant et gestion complète des étudiants.
+                        Educational platform for managing practical work at ISSTM. Assignment submission, 
+                        grade tracking, teacher dashboard, and complete student management.
                     </div>
                     <div class="project-collab">
-                        <i class="fas fa-graduation-cap" aria-hidden="true"></i> Projet Institution Académique
+                        <i class="fas fa-graduation-cap" aria-hidden="true"></i> Academic Institution Project
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/kananavy/isstm-tp-platform" class="project-link enhanced-hover" target="_blank">
@@ -1715,16 +1763,16 @@
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div>
-                            <div class="project-title">Front-end Gestion Étudiants</div>
+                            <div class="project-title">Student Management Front-end</div>
                             <div class="project-tech">JavaScript/React</div>
                         </div>
                     </div>
                     <div class="project-description">
-                        Interface moderne de gestion des étudiants avec suivi des inscriptions, gestion des notes, 
-                        absences et communication avec les parents. Design responsive pour tous types d’appareils.
+                        Modern student management interface with enrollment tracking, grade management, 
+                        attendance, and parent communication. Responsive design for all device types.
                     </div>
                     <div class="project-collab">
-                        <i class="fas fa-users" aria-hidden="true"></i> Équipe Éducation Technologique
+                        <i class="fas fa-users" aria-hidden="true"></i> Educational Technology Team
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/kananavy/front-end-GestionEtudient" class="project-link enhanced-hover" target="_blank">
@@ -1736,16 +1784,16 @@
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div>
-                            <div class="project-title">Gestion Bloc Ambondrona</div>
+                            <div class="project-title">Ambondrona Block Management</div>
                             <div class="project-tech">JavaScript</div>
                         </div>
                     </div>
                     <div class="project-description">
-                        Système de gestion communautaire pour le quartier Ambondrona avec enregistrement des résidents, 
-                        gestion des services, événements et communication pour l’administration locale.
+                        Community management system for Ambondrona neighborhood with resident registration, 
+                        service management, events, and communication for local administration.
                     </div>
                     <div class="project-collab">
-                        <i class="fas fa-building" aria-hidden="true"></i> Solution Gestion Communautaire
+                        <i class="fas fa-building" aria-hidden="true"></i> Community Management Solution
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/kananavy/gestion-bloc-ambondrona" class="project-link enhanced-hover" target="_blank">
@@ -1757,16 +1805,16 @@
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div>
-                            <div class="project-title">Système de Présence Étudiants</div>
+                            <div class="project-title">Student Attendance System</div>
                             <div class="project-tech">PHP/Laravel</div>
                         </div>
                     </div>
                     <div class="project-description">
-                        Système automatisé de suivi des présences étudiantes avec intégration biométrique, notifications en temps réel, 
-                        alertes parents et reporting complet pour les institutions éducatives.
+                        Automated student attendance tracking system with biometric integration, real-time notifications, 
+                        parent alerts, and comprehensive reporting for educational institutions.
                     </div>
                     <div class="project-collab">
-                        <i class="fas fa-clock" aria-hidden="true"></i> Solution Éducation Technologique
+                        <i class="fas fa-clock" aria-hidden="true"></i> Educational Technology Solution
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/kananavy/StudentAttendanceSystem" class="project-link enhanced-hover" target="_blank">
@@ -1778,16 +1826,16 @@
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div>
-                            <div class="project-title">Projet Hackathon Educuma</div>
-                            <div class="project-tech ai-tech">C# + IA</div>
+                            <div class="project-title">Educuma Hackathon Project</div>
+                            <div class="project-tech ai-tech">C# + AI</div>
                         </div>
                     </div>
                     <div class="project-description">
-                        Plateforme éducative avec fonctionnalités IA développée lors du Hackathon Educuma. Système de tutorat intelligent, 
-                        évaluation automatisée et parcours d’apprentissage personnalisé pour les étudiants.
+                        Educational platform with AI features developed during the Educuma Hackathon. Intelligent tutoring system, 
+                        automated evaluation, and personalized learning paths for students.
                     </div>
                     <div class="project-collab">
-                        <i class="fas fa-trophy" aria-hidden="true"></i> Concours Hackathon
+                        <i class="fas fa-trophy" aria-hidden="true"></i> Hackathon Competition
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/kananavy/Educuma_Hackaton" class="project-link enhanced-hover" target="_blank">
@@ -1800,16 +1848,16 @@
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div>
-                            <div class="project-title" data-lang-key="project-6-title">SGRH - Système RH Complet AQUALMA Mahajanga</div>
+                            <div class="project-title" data-lang-key="project-6-title">SGRH - Complete HR System AQUALMA Mahajanga</div>
                             <div class="project-tech">C# .NET</div>
                         </div>
                     </div>
                     <div class="project-description" data-lang-key="project-6-desc">
-                        Application desktop complète de gestion des ressources humaines. Gestion des employés, paies, congés, 
-                        évaluations de performance et reporting RH. Interface moderne avec tableaux de bord analytiques.
+                        Comprehensive desktop HR management application. Management of employees, payroll, leaves, 
+                        performance evaluations, and HR reporting. Modern interface with analytical dashboards.
                     </div>
                     <div class="project-collab" data-lang-key="project-6-collab">
-                        <i class="fas fa-code" aria-hidden="true"></i> Projet personnel - Architecture .NET
+                        <i class="fas fa-code" aria-hidden="true"></i> Personal Project - .NET Architecture
                     </div>
                 </div>
             </div>
@@ -1818,26 +1866,26 @@
         <!-- Education Section -->
         <section id="education" class="content-section">
             <div class="section-header">
-                <h2 class="section-title" data-lang-key="education-title">Formation & Réalisations</h2>
+                <h2 class="section-title" data-lang-key="education-title">Education & Achievements</h2>
             </div>
 
             <div class="skills-grid">
                 <div class="skill-category fade-in">
-                    <h3><i class="fas fa-graduation-cap" aria-hidden="true"></i> <span data-lang-key="academic-training">Formation Académique</span></h3>
+                    <h3><i class="fas fa-graduation-cap" aria-hidden="true"></i> <span data-lang-key="academic-training">Academic Training</span></h3>
                     <div class="timeline-item" style="margin-bottom: 1rem;">
                         <div class="timeline-content" style="margin: 0; padding: 1.5rem;">
-                            <div class="timeline-year">2025 - En cours</div>
-                            <div class="timeline-role" data-lang-key="master-degree">Master en Génie Logiciel</div>
+                            <div class="timeline-year">2025 - Ongoing</div>
+                            <div class="timeline-role" data-lang-key="master-degree">Master's in Software Engineering</div>
                             <div class="timeline-company">ISSTM</div>
-                            <div class="timeline-description" data-lang-key="master-desc">Spécialisation architecture logicielle et gestion de projets</div>
+                            <div class="timeline-description" data-lang-key="master-desc">Specialization in software architecture and project management</div>
                         </div>
                     </div>
                     <div class="timeline-item" style="margin-bottom: 1rem;">
                         <div class="timeline-content" style="margin: 0; padding: 1.5rem;">
                             <div class="timeline-year">2021-2024</div>
-                            <div class="timeline-role" data-lang-key="bachelor-degree">Licence en Génie Informatique</div>
+                            <div class="timeline-role" data-lang-key="bachelor-degree">Bachelor's in Computer Engineering</div>
                             <div class="timeline-company">ISSTM</div>
-                            <div class="timeline-description" data-lang-key="bachelor-desc">Formation complète développement et systèmes</div>
+                            <div class="timeline-description" data-lang-key="bachelor-desc">Comprehensive training in development and systems</div>
                         </div>
                     </div>
                 </div>
@@ -1847,9 +1895,9 @@
                     <div class="timeline-item" style="margin-bottom: 1rem;">
                         <div class="timeline-content" style="margin: 0; padding: 1.5rem;">
                             <div class="timeline-year">2024</div>
-                            <div class="timeline-role" data-lang-key="vice-president">Vice Président ACU Mahajanga</div>
+                            <div class="timeline-role" data-lang-key="vice-president">Vice President ACU Mahajanga</div>
                             <div class="timeline-description" data-lang-key="vice-president-desc">
-                                Leadership d'équipe, organisation d'événements et gestion de projets communautaires
+                                Team leadership, event organization, and community project management
                             </div>
                         </div>
                     </div>
@@ -1858,16 +1906,16 @@
                             <div class="timeline-year">2022-2023</div>
                             <div class="timeline-role" data-lang-key="scout-district">Scout District</div>
                             <div class="timeline-description" data-lang-key="scout-desc">
-                                Encadrement jeunesse et développement de projets solidaires
+                                Youth mentoring and development of solidarity projects
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="skill-category fade-in">
-                    <h3><i class="fas fa-globe" aria-hidden="true"></i> <span data-lang-key="languages-skills">Langues & Soft Skills</span></h3>
+                    <h3><i class="fas fa-globe" aria-hidden="true"></i> <span data-lang-key="languages-skills">Languages & Soft Skills</span></h3>
                     <div class="skill-item">
-                        <span class="skill-name">Malagasy (Natif)</span>
+                        <span class="skill-name">Malagasy (Native)</span>
                         <div class="skill-level">
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
@@ -1877,7 +1925,7 @@
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">Anglais Technique</span>
+                        <span class="skill-name">Technical English</span>
                         <div class="skill-level">
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
@@ -1887,7 +1935,7 @@
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">Français</span>
+                        <span class="skill-name">French</span>
                         <div class="skill-level">
                             <div class="skill-dot active"></div>
                             <div class="skill-dot active"></div>
@@ -1899,9 +1947,9 @@
                     <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
                         <div style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">
                             <i class="fas fa-star" aria-hidden="true"></i> <span data-lang-key="leadership">Leadership & Management</span><br>
-                            <i class="fas fa-users" aria-hidden="true"></i> <span data-lang-key="teamwork">Travail d'équipe collaboratif</span><br>
-                            <i class="fas fa-lightbulb" aria-hidden="true"></i> <span data-lang-key="innovation">Innovation & créativité</span><br>
-                            <i class="fas fa-comments" aria-hidden="true"></i> <span data-lang-key="communication">Communication technique</span>
+                            <i class="fas fa-users" aria-hidden="true"></i> <span data-lang-key="teamwork">Collaborative Teamwork</span><br>
+                            <i class="fas fa-lightbulb" aria-hidden="true"></i> <span data-lang-key="innovation">Innovation & Creativity</span><br>
+                            <i class="fas fa-comments" aria-hidden="true"></i> <span data-lang-key="communication">Technical Communication</span>
                         </div>
                     </div>
                 </div>
@@ -1911,23 +1959,23 @@
         <!-- Contact Section -->
         <section id="contact" class="content-section">
             <div class="section-header">
-                <h2 class="section-title" data-lang-key="contact-title">Contactez-moi</h2>
+                <h2 class="section-title" data-lang-key="contact-title">Contact Me</h2>
                 <p class="section-subtitle" data-lang-key="contact-subtitle">
-                    Prêt à collaborer sur votre prochain projet ? Discutons de vos idées !
+                    Ready to collaborate on your next project? Let's discuss your ideas!
                 </p>
             </div>
 
             <div class="stats fade-in" style="text-align: center;">
                 <div class="contact-info" style="justify-content: center; gap: 3rem; margin-top: 2rem;">
-                    <a href="mailto:kananavymiremby@gmail.com" class="contact-item" style="text-decoration: none; color: var(--primary-color); font-size: 1.1rem; transition: all 0.3s ease;" aria-label="Envoyer un email">
+                    <a href="mailto:kananavymiremby@gmail.com" class="contact-item" style="text-decoration: none; color: var(--primary-color); font-size: 1.1rem; transition: all 0.3s ease;" aria-label="Send email">
                         <i class="fas fa-envelope" style="font-size: 1.5rem;"></i>
                         <span>kananavymiremby@gmail.com</span>
                     </a>
-                    <a href="tel:+261327082479" class="contact-item" style="text-decoration: none; color: var(--primary-color); font-size: 1.1rem; transition: all 0.3s ease;" aria-label="Appeler">
+                    <a href="tel:+261327082479" class="contact-item" style="text-decoration: none; color: var(--primary-color); font-size: 1.1rem; transition: all 0.3s ease;" aria-label="Call">
                         <i class="fas fa-phone" style="font-size: 1.5rem;"></i>
                         <span>032 70 824 79</span>
                     </a>
-                    <a href="https://github.com/kananavy" class="contact-item" style="text-decoration: none; color: var(--primary-color); font-size: 1.1rem; transition: all 0.3s ease;" target="_blank" aria-label="Profil GitHub">
+                    <a href="https://github.com/kananavy" class="contact-item" style="text-decoration: none; color: var(--primary-color); font-size: 1.1rem; transition: all 0.3s ease;" target="_blank" aria-label="GitHub Profile">
                         <i class="fab fa-github" style="font-size: 1.5rem;"></i>
                         <span>github.com/kananavy</span>
                     </a>
@@ -1942,7 +1990,7 @@
             <div>
                 <div class="footer-brand">Elio Rachel RAKOTONOMENJANAHARY</div>
                 <p style="color: var(--text-secondary); margin-top: 0.5rem;" data-lang-key="footer-text">
-                    Développeur Front-end • Mahajanga, Madagascar
+                    Web & Mobile Developer • Mahajanga, Madagascar
                 </p>
             </div>
 
@@ -1953,7 +2001,7 @@
                 <a href="mailto:kananavymiremby@gmail.com" class="social-link" aria-label="Email">
                     <i class="fas fa-envelope"></i>
                 </a>
-                <a href="tel:+261327082479" class="social-link" aria-label="Téléphone">
+                <a href="tel:+261327082479" class="social-link" aria-label="Phone">
                     <i class="fas fa-phone"></i>
                 </a>
                 <a href="https://www.linkedin.com/in/elio-rachel-rakotonomenjanahary-115793364/" class="social-link" target="_blank" aria-label="LinkedIn">
@@ -1964,8 +2012,83 @@
     </footer>
 
     <script>
-        // Traductions complètes
+        // Traductions mises à jour (sans malagasy)
         const translations = {
+            en: {
+                'nav-home': 'Home',
+                'nav-skills': 'Skills',
+                'nav-experience': 'Experience',
+                'nav-projects': 'Projects',
+                'nav-education': 'Education',
+                'nav-contact': 'Contact',
+                'hero-title': 'Elio Rachel RAKOTONOMENJANAHARY',
+                'hero-subtitle': 'Web & Mobile Developer',
+                'hero-description': 'Passionate about modern web technologies, I create elegant and high-performing digital solutions. Specialized in JavaScript, PHP, C# with a collaborative approach on over 20 completed projects.',
+                'see-projects': 'View Projects',
+                'contact-me': 'Contact Me',
+                'projects-completed': 'Projects Completed',
+                'technologies-mastered': 'Technologies Mastered',
+                'collaborations': 'Collaborations',
+                'years-experience': 'Years Experience',
+                'skills-title': 'Technical Skills',
+                'skills-subtitle': 'Complete mastery of modern web, mobile, and artificial intelligence development technologies',
+                'experience-title': 'Professional Experience',
+                'experience-subtitle': 'A rich and diverse experience in web and software development',
+                'role-1': 'Web & Mobile Developer',
+                'desc-1': 'Development of modern and responsive web applications. Participation in digital transformation projects and creation of internal tools. Close collaboration with multidisciplinary teams to deliver innovative solutions in React, Angular, and PHP/Laravel.',
+                'role-2': 'Full Stack Developer Intern',
+                'desc-2': 'Development of web and mobile applications in the aquaculture sector. Active participation in digitization projects and business process improvements. Implementation of RESTful APIs and intuitive user interfaces to optimize workflows.',
+                'role-3': 'IT Technician & Developer',
+                'desc-3': 'Front-end development, network management, and graphic design. Technical support and maintenance of IT systems. Creation of internal management tools and training of end-users. Responsible for IT infrastructure and customized software solutions.',
+                'role-4': 'Active Member & Developer',
+                'desc-4': 'Collaboration on innovative projects: web development, artificial intelligence, and robotics. Leading technical workshops and mentoring student projects. Contribution to the local tech community through knowledge sharing and organizing tech events.',
+                'projects-title': 'Developed Projects',
+                'projects-subtitle': 'A selection of my most significant achievements, showcasing my technical versatility',
+                'project-1-title': 'Front-end Family Tree',
+                'project-1-desc': 'Comprehensive family tree management application with a modern front-end interface and robust back-end API. Management of complex family relationships with interactive visualization and secure authentication system.',
+                'project-1-collab': 'Collaboration: Distributed Frontend/Backend Architecture',
+                'project-2-title': 'ERP Innov Front Gasikara Digital',
+                'project-2-desc': 'Modern front-end interface for an ERP system with analytical dashboard, user management, and full API integration. Responsive design and optimized user experience for enterprise environments.',
+                'project-2-collab': 'Gasikara Digital Team',
+                'project-3-title': 'Tina Project - Finance & Stock',
+                'project-3-desc': 'Financial management and inventory tracking system with automated reporting, intelligent alerts, and advanced analytics. Intuitive interface for multi-warehouse management and real-time tracking.',
+                'project-3-collab': 'Mahajanga Open Source Team',
+                'project-4-title': 'SmartScol - Medical Faculty Mahajanga',
+                'project-4-desc': 'Comprehensive academic platform for managing students, teachers, and curricula. Grading system, automated scheduling, and integrated communication. Dedicated interface for academic administration.',
+                'project-4-collab': 'Mahajanga Academic Team',
+                'project-5-title': 'CTB Nosy be & La Référence Mahajanga Laboratories',
+                'project-5-desc': 'Medical analysis management systems for laboratories. Complete management of patients, test results, billing, and reporting. Secure interface with role-based system and full traceability.',
+                'project-5-collab': 'Laboratory Technical Teams',
+                'project-6-title': 'SGRH - Complete HR System AQUALMA Mahajanga',
+                'project-6-desc': 'Comprehensive desktop HR management application. Management of employees, payroll, leaves, performance evaluations, and HR reporting. Modern interface with analytical dashboards.',
+                'project-6-collab': 'Personal Project - .NET Architecture',
+                'demo': 'Demo',
+                'code': 'Code',
+                'education-title': 'Education & Achievements',
+                'academic-training': 'Academic Training',
+                'master-degree': 'Master\'s in Software Engineering',
+                'master-desc': 'Specialization in software architecture and project management',
+                'bachelor-degree': 'Bachelor\'s in Computer Engineering',
+                'bachelor-desc': 'Comprehensive training in development and systems',
+                'leadership-achievements': 'Engagements & Leadership',
+                'vice-president': 'Vice President ACU Mahajanga',
+                'vice-president-desc': 'Team leadership, event organization, and community project management',
+                'scout-district': 'Scout District',
+                'scout-desc': 'Youth mentoring and development of solidarity projects',
+                'languages-skills': 'Languages & Soft Skills',
+                'leadership': 'Leadership & Management',
+                'teamwork': 'Collaborative Teamwork',
+                'innovation': 'Innovation & Creativity',
+                'communication': 'Technical Communication',
+                'contact-title': 'Contact Me',
+                'contact-subtitle': 'Ready to collaborate on your next project? Let\'s discuss your ideas!',
+                'footer-text': 'Web & Mobile Developer • Mahajanga, Madagascar',
+                'contact-modal-title': 'Contact Me',
+                'form-name': 'Name',
+                'form-email': 'Email',
+                'form-message': 'Message',
+                'form-send': 'Send'
+            },
             fr: {
                 'nav-home': 'Accueil',
                 'nav-skills': 'Compétences',
@@ -1974,7 +2097,7 @@
                 'nav-education': 'Formation',
                 'nav-contact': 'Contact',
                 'hero-title': 'Elio Rachel RAKOTONOMENJANAHARY',
-                'hero-subtitle': 'Développeur Web & Mobile Application',
+                'hero-subtitle': 'Développeur Web & Mobile',
                 'hero-description': 'Passionné par les technologies web modernes, je crée des solutions digitales élégantes et performantes. Spécialisé en JavaScript, PHP, C# avec une approche collaborative sur plus de 20 projets réalisés.',
                 'see-projects': 'Voir mes projets',
                 'contact-me': 'Me contacter',
@@ -1983,10 +2106,10 @@
                 'collaborations': 'Collaborations',
                 'years-experience': 'Années d\'Expérience',
                 'skills-title': 'Compétences Techniques',
-                'skills-subtitle': 'Maîtrise complète des technologies modernes de développement web et logiciel',
+                'skills-subtitle': 'Maîtrise complète des technologies modernes de développement web, mobile et intelligence artificielle',
                 'experience-title': 'Parcours Professionnel',
                 'experience-subtitle': 'Une expérience riche et diversifiée dans le développement web et logiciel',
-                'role-1': 'Développeur Front-end',
+                'role-1': 'Développeur Web & Mobile',
                 'desc-1': 'Développement d\'applications web modernes et responsives. Participation à des projets de transformation numérique et création d\'outils internes. Collaboration étroite avec des équipes multidisciplinaires pour livrer des solutions innovantes en React, Angular et PHP/Laravel.',
                 'role-2': 'Stagiaire Développeur Full stack',
                 'desc-2': 'Développement d\'applications web et mobile dans le secteur aquacole. Participation active aux projets de digitalisation et amélioration des processus métiers. Mise en place d\'APIs RESTful et d\'interfaces utilisateur intuitives pour optimiser les flux de travail.',
@@ -2034,167 +2157,17 @@
                 'communication': 'Communication technique',
                 'contact-title': 'Contactez-moi',
                 'contact-subtitle': 'Prêt à collaborer sur votre prochain projet ? Discutons de vos idées !',
-                'footer-text': 'Développeur Front-end • Mahajanga, Madagascar',
+                'footer-text': 'Développeur Web & Mobile • Mahajanga, Madagascar',
                 'contact-modal-title': 'Contactez-moi',
                 'form-name': 'Nom',
                 'form-email': 'Email',
                 'form-message': 'Message',
                 'form-send': 'Envoyer'
-            },
-            en: {
-                'nav-home': 'Home',
-                'nav-skills': 'Skills',
-                'nav-experience': 'Experience',
-                'nav-projects': 'Projects',
-                'nav-education': 'Education',
-                'nav-contact': 'Contact',
-                'hero-title': 'Elio Rachel RAKOTONOMENJANAHARY',
-                'hero-subtitle': 'Innovative Front-end Developer',
-                'hero-description': 'Passionate about modern web technologies, I create elegant and high-performing digital solutions. Specialized in JavaScript, PHP, C# with a collaborative approach on over 20 completed projects.',
-                'see-projects': 'View Projects',
-                'contact-me': 'Contact Me',
-                'projects-completed': 'Projects Completed',
-                'technologies-mastered': 'Technologies Mastered',
-                'collaborations': 'Collaborations',
-                'years-experience': 'Years Experience',
-                'skills-title': 'Technical Skills',
-                'skills-subtitle': 'Complete mastery of modern web and software development technologies',
-                'experience-title': 'Professional Experience',
-                'experience-subtitle': 'A rich and diverse experience in web and software development',
-                'role-1': 'Front-end Developer',
-                'desc-1': 'Development of modern and responsive web applications. Participation in digital transformation projects and creation of internal tools. Close collaboration with multidisciplinary teams to deliver innovative solutions in React, Angular, and PHP/Laravel.',
-                'role-2': 'Full Stack Developer Intern',
-                'desc-2': 'Development of web and mobile applications in the aquaculture sector. Active participation in digitization projects and business process improvements. Implementation of RESTful APIs and intuitive user interfaces to optimize workflows.',
-                'role-3': 'IT Technician & Developer',
-                'desc-3': 'Front-end development, network management, and graphic design. Technical support and maintenance of IT systems. Creation of internal management tools and training of end-users. Responsible for IT infrastructure and customized software solutions.',
-                'role-4': 'Active Member & Developer',
-                'desc-4': 'Collaboration on innovative projects: web development, artificial intelligence, and robotics. Leading technical workshops and mentoring student projects. Contribution to the local tech community through knowledge sharing and organizing tech events.',
-                'projects-title': 'Developed Projects',
-                'projects-subtitle': 'A selection of my most significant achievements, showcasing my technical versatility',
-                'project-1-title': 'Front-end Family Tree',
-                'project-1-desc': 'Comprehensive family tree management application with a modern front-end interface and robust back-end API. Management of complex family relationships with interactive visualization and secure authentication system.',
-                'project-1-collab': 'Collaboration: Distributed Frontend/Backend Architecture',
-                'project-2-title': 'ERP Innov Front Gasikara Digital',
-                'project-2-desc': 'Modern front-end interface for an ERP system with analytical dashboard, user management, and full API integration. Responsive design and optimized user experience for enterprise environments.',
-                'project-2-collab': 'Gasikara Digital Team',
-                'project-3-title': 'Tina Project - Finance & Stock',
-                'project-3-desc': 'Financial management and inventory tracking system with automated reporting, intelligent alerts, and advanced analytics. Intuitive interface for multi-warehouse management and real-time tracking.',
-                'project-3-collab': 'Mahajanga Open Source Team',
-                'project-4-title': 'SmartScol - Medical Faculty',
-                'project-4-desc': 'Comprehensive academic platform for managing students, teachers, and curricula. Grading system, automated scheduling, and integrated communication. Dedicated interface for academic administration.',
-                'project-4-collab': 'Mahajanga Academic Team',
-                'project-5-title': 'CTB & La Référence Laboratories',
-                'project-5-desc': 'Medical analysis management systems for laboratories. Complete management of patients, test results, billing, and reporting. Secure interface with role-based system and full traceability.',
-                'project-5-collab': 'Laboratory Technical Teams',
-                'project-6-title': 'SGRH - Complete HR System',
-                'project-6-desc': 'Comprehensive desktop HR management application. Management of employees, payroll, leaves, performance evaluations, and HR reporting. Modern interface with analytical dashboards.',
-                'project-6-collab': 'Personal Project - .NET Architecture',
-                'demo': 'Demo',
-                'code': 'Code',
-                'education-title': 'Education & Achievements',
-                'academic-training': 'Academic Training',
-                'master-degree': 'Master\'s in Software Engineering',
-                'master-desc': 'Specialization in software architecture and project management',
-                'bachelor-degree': 'Bachelor\'s in Computer Engineering',
-                'bachelor-desc': 'Comprehensive training in development and systems',
-                'leadership-achievements': 'Engagements & Leadership',
-                'vice-president': 'Vice President ACU Mahajanga',
-                'vice-president-desc': 'Team leadership, event organization, and community project management',
-                'scout-district': 'Scout District',
-                'scout-desc': 'Youth mentoring and development of solidarity projects',
-                'languages-skills': 'Languages & Soft Skills',
-                'leadership': 'Leadership & Management',
-                'teamwork': 'Collaborative Teamwork',
-                'innovation': 'Innovation & Creativity',
-                'communication': 'Technical Communication',
-                'contact-title': 'Contact Me',
-                'contact-subtitle': 'Ready to collaborate on your next project? Let\'s discuss your ideas!',
-                'footer-text': 'Front-end Developer • Mahajanga, Madagascar',
-                'contact-modal-title': 'Contact Me',
-                'form-name': 'Name',
-                'form-email': 'Email',
-                'form-message': 'Message',
-                'form-send': 'Send'
-            },
-            mg: {
-                'nav-home': 'Fandraisana',
-                'nav-skills': 'Fahaizana',
-                'nav-experience': 'Traikefa',
-                'nav-projects': 'Tetikasa',
-                'nav-education': 'Fiofanana',
-                'nav-contact': 'Fifandraisana',
-                'hero-title': 'Elio Rachel RAKOTONOMENJANAHARY',
-                'hero-subtitle': 'Mpamorona Front-end Mavitrika',
-                'hero-description': 'Mirehareha amin\'ny teknolojia tranonkala maoderina, mamorona vahaolana nomerika kanto sy mahomby aho. Manam-pahaizana manokana amin\'ny JavaScript, PHP, C# miaraka amin\'ny fomba fiaraha-miasa amin\'ny tetikasa mihoatra ny 20 vita.',
-                'see-projects': 'Jereo ny Tetikasako',
-                'contact-me': 'Mifandraisa amiko',
-                'projects-completed': 'Tetikasa Vita',
-                'technologies-mastered': 'Teknolojia Voafehy',
-                'collaborations': 'Fiaraha-miasa',
-                'years-experience': 'Taona niainana',
-                'skills-title': 'Fahaizana Teknika',
-                'skills-subtitle': 'Fahaizana tanteraka ny teknolojia maoderina amin\'ny fampivoarana tranonkala sy rindrambaiko',
-                'experience-title': 'Zava-bita eo amin\'ny asa',
-                'experience-subtitle': 'Traikefa manankarena sy isan-karazany amin\'ny fampivoarana tranonkala sy rindrambaiko',
-                'role-1': 'Mpamorona Front-end',
-                'desc-1': 'Fampivoarana fampiharana tranonkala maoderina sy mandray andraikitra. Fandraisana anjara amin\'ny tetikasa fanovana nomerika sy famoronana fitaovana anatiny. Fiaraha-miasa akaiky amin\'ny ekipa maro karazana mba hanaterana vahaolana vaovao amin\'ny React, Angular, ary PHP/Laravel.',
-                'role-2': 'Mpianatra Mpamorona Full Stack',
-                'desc-2': 'Fampivoarana fampiharana tranonkala sy finday amin\'ny sehatry ny fiompiana trondro. Fandraisana anjara mavitrika amin\'ny tetikasa nomerika sy fanatsarana ny fizotran\'ny asa. Fametrahana API RESTful sy interface mpampiasa intuitive hanatsarana ny fikorianan\'ny asa.',
-                'role-3': 'Teknisianina Informatika & Mpamorona',
-                'desc-3': 'Fampivoarana Front-end, fitantanana tambajotra ary famolavolana sary. Fanohanana teknika sy fikojakojana ny rafitra informatika. Famoronana fitaovana fitantanana anatiny sy fanofanana ny mpampiasa farany. Andraikitra amin\'ny fotodrafitrasa IT sy vahaolana rindrambaiko namboarina.',
-                'role-4': 'Mpikambana Mavitrika & Mpamorona',
-                'desc-4': 'Fiaraha-miasa amin\'ny tetikasa vaovao: fampivoarana tranonkala, faharanitan-tsaina artifisialy, ary robotika. Fandaminana atrikasa teknika sy fitarihana tetikasan\'ny mpianatra. Fandraisana anjara amin\'ny fiaraha-monina teknolojia eo an-toerana amin\'ny alalan\'ny fizarana fahalalana sy fandaminana hetsika teknolojia.',
-                'projects-title': 'Tetikasa Novolavolaina',
-                'projects-subtitle': 'Safidy ny zava-bita manan-danja indrindra, mampiseho ny fahaizako teknika isan-karazany',
-                'project-1-title': 'Hazo Fianakaviana Front-end',
-                'project-1-desc': 'Fampiharana feno momba ny fitantanana hazo fianakaviana miaraka amin\'ny interface front-end maoderina sy API back-end matanjaka. Fitantanana ny fifandraisana fianakaviana sarotra miaraka amin\'ny fampisehoana interactive sy rafitra fanamarinana azo antoka.',
-                'project-1-collab': 'Fiaraha-miasa: Rafitra zaraina Frontend/Backend',
-                'project-2-title': 'ERP Innov Front Gasikara Digital',
-                'project-2-desc': 'Interface front-end maoderina ho an\'ny rafitra ERP miaraka amin\'ny dashboard analytika, fitantanana mpampiasa, ary fampidirana API feno. Famolavolana mandray andraikitra sy traikefa mpampiasa nohatsaraina ho an\'ny tontolon\'ny orinasa.',
-                'project-2-collab': 'Ekipa Gasikara Digital',
-                'project-3-title': 'Tetikasa Tina - Fitantanam-bola & Tahiry',
-                'project-3-desc': 'Rafitra fitantanana ara-bola sy fanaraha-maso tahiry miaraka amin\'ny tatitra mandeha ho azy, fampandrenesana marani-tsaina, ary analytics avo lenta. Interface intuitive ho an\'ny fitantanana multi-tahiry sy fanaraha-maso amin\'ny fotoana tena izy.',
-                'project-3-collab': 'Ekipa open source Mahajanga',
-                'project-4-title': 'SmartScol - Fakolty Fitsaboana',
-                'project-4-desc': 'Sehatra akademika feno ho an\'ny fitantanana mpianatra, mpampianatra, ary fandaharam-pianarana. Rafitra fanomezana naoty, fandaminana mandeha ho azy, ary fifandraisana mitambatra. Interface natokana ho an\'ny fitantanana akademika.',
-                'project-4-collab': 'Ekipa akademika Mahajanga',
-                'project-5-title': 'Laboratoara CTB & La Référence',
-                'project-5-desc': 'Rafitra fitantanana fanadihadiana ara-pitsaboana ho an\'ny laboratoara. Fitantanana feno ny marary, valin\'ny fanadihadiana, faktiora, ary tatitra. Interface azo antoka miaraka amin\'ny rafitra mifototra amin\'ny andraikitra sy fanaraha-maso feno.',
-                'project-5-collab': 'Ekipa teknika laboratoara',
-                'project-6-title': 'SGRH - Rafitra HR Feno',
-                'project-6-desc': 'Fampiharana desktop feno momba ny fitantanana harena olombelona. Fitantanana ny mpiasa, karama, fialan-tsasatra, fanombanana ny fampisehoana, ary tatitra HR. Interface maoderina miaraka amin\'ny dashboard analytika.',
-                'project-6-collab': 'Tetikasa manokana - Rafitra .NET',
-                'demo': 'Demo',
-                'code': 'Kodia',
-                'education-title': 'Fiofanana & Zava-bita',
-                'academic-training': 'Fiofanana Akademika',
-                'master-degree': 'Master amin\'ny Injeniera Rindrambaiko',
-                'master-desc': 'Manokana amin\'ny rafitra rindrambaiko sy fitantanana tetikasa',
-                'bachelor-degree': 'Lisansa amin\'ny Injeniera Informatika',
-                'bachelor-desc': 'Fiofanana feno momba ny fampivoarana sy rafitra',
-                'leadership-achievements': 'Firotsahana & Fitarihana',
-                'vice-president': 'Filoha Lefitry ny ACU Mahajanga',
-                'vice-president-desc': 'Fitarihana ekipa, fandaminana hetsika, ary fitantanana tetikasa fiaraha-monina',
-                'scout-district': 'Scout District',
-                'scout-desc': 'Fitarihana tanora sy fampivoarana tetikasa firaisankina',
-                'languages-skills': 'Fiteny & Fahaizana Malefaka',
-                'leadership': 'Fitarihana & Fitantanana',
-                'teamwork': 'Fiaraha-miasa amin\'ny Ekipa',
-                'innovation': 'Fanavaozana & Famoronana',
-                'communication': 'Fifandraisana teknika',
-                'contact-title': 'Mifandraisa amiko',
-                'contact-subtitle': 'Vonona hiara-hiasa amin\'ny tetikasanao manaraka? Andao hiresaka momba ny hevitrao!',
-                'footer-text': 'Mpamorona Front-end • Mahajanga, Madagasikara',
-                'contact-modal-title': 'Mifandraisa amiko',
-                'form-name': 'Anarana',
-                'form-email': 'Email',
-                'form-message': 'Hafatra',
-                'form-send': 'Alefa'
             }
         };
 
         // Variables globales
-        let currentLanguage = 'fr';
+        let currentLanguage = 'en'; // Anglais par défaut
         let isDarkMode = true;
 
         // Initialisation
@@ -2209,7 +2182,7 @@
         function initializeApp() {
             // Charger les préférences
             const savedTheme = localStorage.getItem('theme') || 'dark';
-            const savedLanguage = localStorage.getItem('language') || 'fr';
+            const savedLanguage = localStorage.getItem('language') || 'en'; // Anglais par défaut
             
             isDarkMode = savedTheme === 'dark';
             currentLanguage = savedLanguage;
@@ -2258,13 +2231,21 @@
                 });
             });
 
-            // Contact modal
+            // Contact modal - uniquement sur desktop
             const modal = document.getElementById('contact-modal');
             const modalTriggers = document.querySelectorAll('.contact-trigger');
             const modalClose = document.querySelector('.modal-close');
 
             modalTriggers.forEach(trigger => {
-                trigger.addEventListener('click', () => {
+                trigger.addEventListener('click', (e) => {
+                    // Sur mobile, utiliser directement mailto au lieu du modal
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        window.location.href = 'mailto:kananavymiremby@gmail.com?subject=Contact depuis le portfolio&body=Bonjour Elio Rachel,%0A%0A';
+                        return;
+                    }
+                    
+                    // Sur desktop, ouvrir le modal
                     modal.style.display = 'flex';
                     modal.setAttribute('aria-hidden', 'false');
                 });
